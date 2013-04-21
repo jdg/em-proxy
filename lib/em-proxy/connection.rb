@@ -1,7 +1,7 @@
 module EventMachine
   module ProxyServer
     class Connection < EventMachine::Connection
-      attr_accessor :debug
+      attr_accessor :debug, :secure
 
       ##### Proxy Methods
       def on_data(&blk); @on_data = blk; end
@@ -12,6 +12,7 @@ module EventMachine
       ##### EventMachine
       def initialize(options)
         @debug = options[:debug] || false
+        @secure = options[:secure] || false
         @servers = {}
       end
 

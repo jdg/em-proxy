@@ -9,6 +9,8 @@ module EventMachine
       end
 
       def connection_completed
+        start_tls if @plexer.secure == true
+
         debug [@name, :conn_complete]
         @plexer.connected(@name)
         @connected.succeed
